@@ -42,13 +42,13 @@ export default class Remarkable extends Component {
   }
 
   renderMarkdown(source) {
-    const { options } = this.props;
+    const { options, sanitizer } = this.props;
 
     if (!this.md) {
       this.md = new Markdown(options);
     }
 
-    return this.md.render(source);
+    return sanitizer(this.md.render(source));
   }
 
   render() {
@@ -64,11 +64,13 @@ export default class Remarkable extends Component {
 
 Remarkable.defaultProps = {
   container: 'div',
-  options: {}
+  options: {},
+  sanitizer: id => id
 };
 
 Remarkable.propTypes = {
   container: PropTypes.string,
   options: PropTypes.object,
+  sanitizer: PropTypes.func,
   source: PropTypes.string
 };

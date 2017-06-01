@@ -1,6 +1,8 @@
 import unexpected from 'unexpected';
 import unexpectedReact from 'unexpected-react';
 
+import sanitizer from 'sanitize-html';
+
 import React from 'react';
 import Remarkable from '.';
 
@@ -32,6 +34,26 @@ describe('Remarkable', () => {
           <span
             dangerouslySetInnerHTML={{
               __html: '<p><strong>Markdown is awesome!</strong></p>\n'
+            }}
+          />
+        </div>
+      );
+    });
+  });
+
+  describe('when providing a sanitizer', () => {
+    it('transforms it', () => {
+      expect(
+        <Remarkable sanitizer={rendered => sanitizer(rendered)}>
+          ![Do not render](http://example.tld)
+
+          **Awesome**
+        </Remarkable>,
+        'to deeply render as',
+        <div>
+          <span
+            dangerouslySetInnerHTML={{
+              __html: '<p> <strong>Awesome</strong></p>\n'
             }}
           />
         </div>

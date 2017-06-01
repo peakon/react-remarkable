@@ -19,6 +19,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
+    "sanitize-html": "^1.14.1",
     "unexpected": "^10.29.0",
     "unexpected-react": "^4.0.2"
   },
