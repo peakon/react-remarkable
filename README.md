@@ -47,6 +47,7 @@ Available props:
 - `options` - Hash of Remarkable options
 - `source`  - Markdown source. You can also pass the source as children, which allows you to mix React components and Markdown.
 - `container` - Element to use as container. Defaults to `span`.
+- `sanitize` - Function. Callback hook as an opportunity to transform the Markdown output before adding it to the DOM.
 
 ## License
 MIT

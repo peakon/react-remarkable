@@ -44,7 +44,7 @@ describe('Remarkable', () => {
   describe('when providing a sanitizer', () => {
     it('transforms it', () => {
       expect(
-        <Remarkable sanitizer={rendered => sanitizer(rendered)}>
+        <Remarkable sanitize={rendered => sanitizer(rendered)}>
           ![Do not render](http://example.tld)
 
           **Awesome**
